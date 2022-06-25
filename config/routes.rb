@@ -25,4 +25,8 @@ Rails.application.routes.draw do
     end
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
+
+  scope module: :admin do
+    get '/admin' => 'homes#top'
+  end
 end
