@@ -12,30 +12,37 @@
 
   <body>
     <header>
-      <%= link_to root_path do %>
-        <%= image_tag 'logo.jpg', size: '150x100' %>
-      <% end %>
-    <%# 顧客ログイン時のheader %>
-      <% if customer_signed_in? %>
-        <%= link_to 'マイページ', customer_path(current_customer.id) %>
-        <%= link_to '商品一覧' %>
-        <%= link_to 'カート' %>
-        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
-      <%# 管理者側ログイン時 %>
-      <% elsif admin_signed_in? %>
-        <%= link_to '商品一覧' %>
-        <%= link_to '会員一覧' %>
-        <%= link_to '注文一覧' %>
-        <%= link_to '注文履歴一覧' %>
-        <%= link_to 'ジャンル一覧' %>
-        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-      <% else %>
-      <%# 顧客 非ログイン時 %>
-        <%= link_to '商品一覧'%>
-        <%= link_to '新規登録', new_customer_registration_path%>
-        <%= link_to 'ログイン', new_customer_session_path%>
-        
-      <% end %>
+      <div class= "container">
+        <div class= "row">
+          <div class= "col-3">
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.jpg', size: '150x100' %>
+            <% end %>
+          </div>
+          <%# 顧客ログイン時のheader %>
+          <div class="col-8">
+            <% if customer_signed_in? %>
+              <%= link_to 'マイページ', customer_path(current_customer.id) %>
+              <%= link_to '商品一覧' %>
+              <%= link_to 'カート' %>
+              <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+            <%# 管理者側ログイン時 %>
+            <% elsif admin_signed_in? %>
+              <%= link_to '商品一覧' %>
+              <%= link_to '会員一覧' %>
+              <%= link_to '注文一覧' %>
+              <%= link_to '注文履歴一覧' %>
+              <%= link_to 'ジャンル一覧' %>
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+            <% else %>
+            <%# 顧客 非ログイン時 %>
+              <%= link_to '商品一覧'%>
+              <%= link_to '新規登録', new_customer_registration_path%>
+              <%= link_to 'ログイン', new_customer_session_path%>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </header>
     <%= yield %>
   </body>
