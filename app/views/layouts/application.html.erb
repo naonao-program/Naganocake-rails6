@@ -19,7 +19,7 @@
               <%= image_tag 'logo.jpg', size: '150x100' %>
             <% end %>
           </div>
-          <%# 顧客ログイン時のheader %>
+          <%# 顧客（エンドユーザー）ログイン時のheader %>
           <div class="col-8">
             <% if customer_signed_in? %>
               <%= link_to 'マイページ', customer_path(current_customer.id) %>
