@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     resources :items, only:[:index, :show]
     resources :customers, only:[:show, :edit, :update] do
       collection do
-        get 'withdraw'
-        patch 'unsubscribe'
+        get 'unsubscribe'
+        patch 'withdraw'
       end
     end
     resources :cart_items, only:[:index,:update,:create,:destroy] do
