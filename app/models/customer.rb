@@ -14,8 +14,4 @@ class Customer < ApplicationRecord
     validates :address
     validates :phone_number
   end
-  # 退会済みのユーザが同じアカウントでログインできないように制約
-  def active_for_authentication?
-    super && (delete == false)
-  end
 end

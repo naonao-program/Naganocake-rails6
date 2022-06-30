@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # 顧客用
   # /customers/sign_in ...
-  devise_for :customers,skip: [:passwords,], controllers: {
-    registrations: "customers/registrations",
-    sessions: 'customers/sessions'
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
   }
 
   # 管理者用
@@ -38,5 +38,6 @@ Rails.application.routes.draw do
 
   scope module: :admin do
     get '/admin' => 'homes#top'
+    resources :customers, only:[:index]
   end
 end
