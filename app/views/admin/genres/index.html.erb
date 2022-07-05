@@ -19,7 +19,7 @@
         <tbody>
           <% @genres.each do |genre|%>
             <td><%= genre.name %></td>
-            <td><%= '編集する' %></td>
+            <td><%= link_to '編集する', edit_genre_path(genre), class: "btn btn-success" %></td>
           <% end %>
         </tbody>
       </table>
