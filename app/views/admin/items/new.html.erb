@@ -1,0 +1,30 @@
+<div class="container">
+  <div class= "row">
+    <%= form_with model: @item_new, url: admin_items_path, method: :post, local: true do |f| %>
+      <%= f.label :商品画像 %>
+      <%= f.file_field :image_id %>
+      <div class= "form-group">
+        <%= f.label :商品名 %>
+        <%= f.text_field :name, placeholder: "商品名" %>
+      </div>
+      <div class= "form-group">
+        <%= f.label :商品説明 %>
+        <%= f.text_field :introduction, placeholder: "ここに説明文を記述します", size: '50x50' %>
+      </div>
+      <%= f.label :ジャンル%>
+      <%= f.collection_select :genre_id, Admin::Genre.all, :id , :name, include_blank: "選択してください"%>
+      <div class= "form-group">
+        <%= f.label :税抜価格 %>
+        <%= f.text_field :price, placeholder: "1000", size: '50x50' %>円
+      </div>
+      <div class= "form-group">
+        <%= f.label :商品ステータス %>
+        <%= f.radio_button :is_active, :true, checked: true %>
+        <%= f.label :販売中 %>
+        <%= f.radio_button :is_active, :false %>
+        <%= f.label :販売停止中 %>
+      </div>
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
