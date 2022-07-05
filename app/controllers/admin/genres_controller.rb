@@ -9,7 +9,7 @@ class Admin::GenresController < ApplicationController
     if @genre_new.save
       redirect_to genres_path
     else
-      @genres = Genre.all
+      @genres = Admin::Genre.all
       render :index
     end
   end

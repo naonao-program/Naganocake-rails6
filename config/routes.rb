@@ -36,9 +36,9 @@ Rails.application.routes.draw do
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 
-  scope module: :admin do
-    get '/admin' => 'homes#top'
+  namespace :admin do
     resources :customers, only:[:index]
     resources :genres, only:[:index, :create, :edit, :update]
+    resources :items, only:[:index]
   end
 end

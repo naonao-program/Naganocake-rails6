@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Public::Item.all
+    @items = Item.all
   end
 end

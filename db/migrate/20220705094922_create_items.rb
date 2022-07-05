@@ -1,6 +1,6 @@
-class CreatePublicItems < ActiveRecord::Migration[6.1]
+class CreateItems < ActiveRecord::Migration[6.1]
   def change
-    create_table :public_items do |t|
+    create_table :items do |t|
       t.integer :genre_id, null:false
       t.string :name, null:false
       t.string :image_id, null:false
