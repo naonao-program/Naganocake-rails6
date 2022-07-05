@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   scope module: :admin do
     get '/admin' => 'homes#top'
+    get '/admin/genres' => 'genres#index'
     resources :customers, only:[:index]
   end
 end
