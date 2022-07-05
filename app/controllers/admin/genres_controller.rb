@@ -18,6 +18,15 @@ class Admin::GenresController < ApplicationController
     @genre = Admin::Genre.find(params[:id])
   end
 
+  def update
+    @genre = Admin::Genre.find(params[:id])
+    if @genre.update(genre_params)
+      redirect_to genres_path
+    else
+      render :edit
+    end
+  end
+
   private
   def genre_params
     params.require(:admin_genre).permit(:name)
