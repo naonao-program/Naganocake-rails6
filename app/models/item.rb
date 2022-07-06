@@ -3,10 +3,11 @@ class Item < ApplicationRecord
   belongs_to :genre
 
   with_options precense: true do 
-    validates :genre_id
     validates :name
+    validates :introduction
     validates :image_id
     validates :price
     validates :is_active
+    validates :genre_id
   end
 end
