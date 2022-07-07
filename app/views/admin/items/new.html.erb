@@ -2,7 +2,7 @@
   <div class= "row">
     <%= form_with model: @item_new, url: admin_items_path, method: :post, local: true do |f| %>
       <%= f.label :商品画像 %>
-      <%= f.file_field :image_id %>
+      <%= f.file_field :image, accept: "image/*" %>
       <div class= "form-group">
         <%= f.label :商品名 %>
         <%= f.text_field :name, placeholder: "商品名" %>

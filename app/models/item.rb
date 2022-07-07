@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
-  has_one_attached :image
   belongs_to :genre
-
+  has_one_attached :image
+  
   with_options precense: true do 
     validates :name
     validates :introduction

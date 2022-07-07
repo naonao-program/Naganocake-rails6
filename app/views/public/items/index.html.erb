@@ -1,5 +1,32 @@
-<% @items.each do |item|%>
-  <%= item.image %>
-  <%= item.name %>
-  <%= item.price * 1.1 %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <table>
+        <thead class="table table-bordered">
+        <tr>
+          <th class="text-center">ジャンル検索</td>
+        </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
+    <div class="col-10 pl-3">
+      <section>
+        <h3>商品一覧(全<%= @items.count %>件)</h3>
+        <div class="d-flex flex-wrap">
+          <% @items.each do |item|%>
+          <div class="mt-5 mr-3">
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: '200x150' %><br>
+            <% end %>
+              <%= item.name %><br>
+              ¥<%= item.price * 1.1.round %>
+            <% end %>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
