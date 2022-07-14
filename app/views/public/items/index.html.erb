@@ -22,7 +22,7 @@
               <%= image_tag item.image, size: '200x150' %><br>
             <% end %>
               <%= item.name %><br>
-              ¥<%= item.price * 1.1.round %>
+              ¥<%= item.with_tax_price.to_s %>
             <% end %>
           </div>
         </div>

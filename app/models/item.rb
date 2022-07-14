@@ -8,4 +8,9 @@ class Item < ApplicationRecord
     validates :price
     validates :is_active
   end
+
+  def with_tax_price
+    (price * 1.1).ceil
+    # ceilは切り上げ、floorが切り捨て、roundが四捨五入
+  end
 end
