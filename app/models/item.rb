@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
+  belongs_to :cart
 
   with_options presence: true do
     validates :name
