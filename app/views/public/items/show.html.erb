@@ -1,0 +1,14 @@
+<div class = "container">
+  <div class="row">
+    <div class="col-3">
+      <h3>ジャンル検索</h3>
+    </div>
+    <div class="col-9">
+      <%= image_tag @item.image, size: '400x300' %>
+      <%= @item.name %>
+      <%= @item.introduction %>
+      <%= @item.with_tax_price.to_s %>
+      <%# formでカート入れるための個数選択と送信ボタン %>
+    </div>
+  </div>
+</div>
