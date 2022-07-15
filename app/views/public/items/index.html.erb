@@ -18,11 +18,13 @@
         <div class="d-flex flex-wrap">
           <% @items.each do |item|%>
           <div class="mt-5 mr-3">
-            <% if item.image.attached? %>
-              <%= image_tag item.image, size: '200x150' %><br>
-            <% end %>
-              <%= item.name %><br>
-              ¥<%= item.with_tax_price.to_s %>
+            <%= link_to item_path(item) do %>
+              <% if item.image.attached? %>
+                <%= image_tag item.image, size: '200x150' %><br>
+              <% end %>
+                <%= item.name %><br>
+                ¥<%= item.with_tax_price.to_s %>
+              <% end %>
             <% end %>
           </div>
         </div>
