@@ -9,7 +9,10 @@
       <%= @item.introduction %>
       <%= @item.with_tax_price.to_s %>
       <%# formでカート入れるための個数選択と送信ボタン %>
-      
+      <%= form_with model:@cart, url: cart_items_path, method: :post, local: true do |f| %>
+        <%= f.select :amount, [*(1..10)], selected: 1 %>
+        <%= f.submit "カートに入れる", class: "btn btn-success"%>
+      <% end %>
     </div>
   </div>
 </div>
