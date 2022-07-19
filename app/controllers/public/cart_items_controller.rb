@@ -1,6 +1,14 @@
 class Public::CartItemsController < ApplicationController
+  def index
+  end
+  
   def create
     @cart = Cart.new(cart_params)
+    if @cart.save
+      redirect_to cart_items_path
+    else
+      render 'public/items/show'
+    end
   end
 
   private
