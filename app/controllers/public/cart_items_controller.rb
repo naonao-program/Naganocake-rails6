@@ -1,7 +1,8 @@
 class Public::CartItemsController < ApplicationController
   def index
+    @carts = current_customer.item
   end
-  
+
   def create
     @cart = Cart.new(cart_params)
     if @cart.save
