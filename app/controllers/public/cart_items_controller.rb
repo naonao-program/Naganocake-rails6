@@ -5,7 +5,6 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart = CartItem.new(cart_item_params)
-    binding.pry
     current_cart_items = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
     # ↓カートに商品が追加されているかどうかの判定
     if current_cart_items.present?
