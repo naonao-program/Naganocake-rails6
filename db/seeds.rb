@@ -54,3 +54,18 @@ for i in 1..10 do
     item.save
   end
 end
+
+CartItem.create!(
+  [
+    {
+      amount: '4',
+      item_id: '1',
+      customer_id: '1'
+    },
+    {
+      amount: '2',
+      item_id: '3',
+      customer_id: '1'
+    }
+  ]
+)
