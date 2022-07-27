@@ -32,7 +32,7 @@ class Public::CartItemsController < ApplicationController
     cart = CartItem.find(params[:id])
     cart.destroy
     flash[:notice] = 'カート内から削除しました'
-    redirect_to item_path
+    redirect_to cart_items_path
   end
 
   def destroy_all
