@@ -29,6 +29,16 @@ class Public::AddressesController < ApplicationController
     end
   end
 
+  def destroy
+    @address = Address.find(params[:id])
+    if @address.destroy
+      redirect_to addresses_path
+    else
+      @addresses = Address.all
+      render :index
+    end
+  end
+
   private
   def address_params
     params.require(:address).permit(:postal_code,:address,:name)
