@@ -20,9 +20,8 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
-    @address = Address.new(address_params)
-    @address.customer_id = current_customer.id
-    if @address.save
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
       redirect_to addresses_path
     else
       render :edit
