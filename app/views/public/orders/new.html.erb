@@ -1,8 +1,18 @@
 <div class="container">
   <div class="row">
-    <h3>注文情報入力</h3>
-    <%= form_with model:@order, local: true do |f| %>
-    
-    <% end %>
+    <section class="inner">
+      <h3>注文情報入力</h3>
+      <%= form_with model:@order, local: true do |f| %>
+        <h5 class="font-weight-bold">支払方法</h5>
+        <label>
+          <%= f.radio_button :payment_method, "card", checked: true %>クレジットカード
+        </label><br>
+        <label>
+          <%= f.radio_button :payment_method, "bank" %>銀行振込
+        </label>
+        <h5 class="font-weight-bold">お届け先</h5>
+        
+      <% end %>
+    </section>
   </div>
 </div>
