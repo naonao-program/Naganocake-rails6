@@ -2,7 +2,7 @@
   <div class="row">
     <section class="inner">
       <h3>注文情報入力</h3>
-      <%= form_with model:@order, url: comfirm_orders_path, method: :post , local: true do |f| %>
+      <%= form_with model:@order,url:comfirm_orders_path, method: :get , local: true do |f| %>
         <h5 class="font-weight-bold">支払方法</h5>
         <label>
           <%= f.radio_button :payment_method, :credit_card, checked: true %>クレジットカード
@@ -12,19 +12,19 @@
         </label>
         <h5 class="font-weight-bold">お届け先</h5>
         <label>
-          <%= f.radio_button :address, 0 ,checked: true %>ご自身の住所
+          <%= f.radio_button :select_address, 0 ,checked: true %>ご自身の住所
         </label><br>
           〒<%= current_customer.post_code%>
           <%= current_customer.address %><br>
           <%= current_customer.last_name %>
           <%= current_customer.first_name %><br>
           <label>
-            <%= f.radio_button :address, 1 ,class: "mt-3"%>登録済住所から選択
+            <%= f.radio_button :select_address, 1 ,class: "mt-3"%>登録済住所から選択
           </label><br>
           <%# プルダウンメニューでDBから住所から選択 %>
           <%= f.collection_select :address, Address.all , :id , :full_address %><br>
           <label>
-            <%= f.radio_button :address, 2 , class: "mt-3"%>新しいお届け先
+            <%= f.radio_button :select_address, 2 , class: "mt-3"%>新しいお届け先
           </label>
           <div class="field">
             <label>郵便番号（ハイフン無し）</label>
