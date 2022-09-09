@@ -2,7 +2,7 @@
   <div class="row">
     <section class="inner">
       <h3>注文履歴一覧</h3>
-      <table>
+      <table class="table table table-bordered">
         <thead>
           <tr>
             <td>購入日時</td>
@@ -14,7 +14,25 @@
         <tbody>
           <% @order.each do |order| %>
           <tr>
-            <td><%= order.name %></td>
+            <td>
+              <%= link_to admin_order_path(order.id) do %>
+                <%= l order.created_at %></td>
+              <% end %>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <td><%= order.order_posts.all.sum(:amount) %></td>
+            <td>
+              <% if order.status == 0 %>
+                <span>入金待ち</span>
+              <% elsif order.status == 1 %>
+                <span>入金確認</span>
+              <% elsif order.status == 2 %>
+                <span>製作中</span>
+              <% elsif order.status == 3 %>
+                <span>発送準備中</span>
+              <% else %>
+                <span>発送済み</span>              
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
