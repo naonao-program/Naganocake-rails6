@@ -10,7 +10,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @cart_items = CartItem.all
     @order.shipping_cost = 800
-    binding.pry
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.post_code
       @order.address = current_customer.address
