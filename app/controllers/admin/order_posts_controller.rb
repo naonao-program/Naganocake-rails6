@@ -10,6 +10,19 @@ class Admin::OrderPostsController < ApplicationController
           break
         end
       end
+
+      if order_post.making_status == "2"
+        order_post.order.status = "3"
+      elsif
+        produce_executed_count == order_post.order.order_posts.count
+        order_post.order.status = "2"
+      end
+      order_post.order.save!
+      flash[:notice] = '更新されました。'
+    else
+      @order = order_post.order
+      @order_post = @order.order_post
+      render "orders/show"
     end
     redirect_to admin_order_path(order_post.order_id)
   end
