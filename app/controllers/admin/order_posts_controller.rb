@@ -12,6 +12,7 @@ class Admin::OrderPostsController < ApplicationController
       end
       redirect_to admin_order_path(order_post.order_id)
     end
+  end
 
   private
   def order_post_params
