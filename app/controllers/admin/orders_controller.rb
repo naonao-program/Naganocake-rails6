@@ -10,11 +10,12 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    item_orders = @order.order_posts
     if @order.update(update_status_params)
-      if @order.status == "0"
-        @order.order_details.each do |order_detail|
-          order_detail.making_status = "1"
-          order_detail.save!
+      if params[:order][:status] == "1"
+        item_orders.each do |item_order|
+          item_order.making_status = "1"
+          item_order.save
         end
       end
       flash[:notice] = '更新されました。'
@@ -33,6 +34,10 @@ class Admin::OrdersController < ApplicationController
 
   def update_status_params
     params.require(:order).permit(:status)
+  end
+
+  def order_status_params
+    params.require(:order).permit(:making_status).merge(making_status: params[:order][:making_status].to_i)
   end
 
 end

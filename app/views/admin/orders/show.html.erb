@@ -42,7 +42,7 @@
           <th scope="col">単価</th>
           <th scope="col">個数</th>
           <th scope="col">小計</th>
-          <th scope="col">制作ステータス</th>
+          <th scope="col">製作ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -54,7 +54,7 @@
             <td scope="col"><%= (order_post.price * order_post.amount).to_s(:delimited, delimiter: ',') %></td>
             <td scope="col">
               <%= form_with(model:order_post, url:admin_order_post_path(order_post), method: :PATCH) do |f| %>
-                <%= f.select :making_status, options_for_select([['制作不可', "0"], ['制作待ち', "1"], ['製作中', "2"], ['製作完了', "3"]], { :selected => order_post.making_status }) %>
+                <%= f.select :making_status, options_for_select([['製作不可', "0"], ['製作待ち', "1"], ['製作中', "2"], ['製作完了', "3"]], { :selected => order_post.making_status }) %>
                 <%= f.submit '更新',class:"btn btn-success" %>
               <% end %>
             </td>

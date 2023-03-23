@@ -1,31 +1,17 @@
 class Admin::OrderPostsController < ApplicationController
   def update
     order_post = OrderPost.find(params[:id])
+    order_status = order_post.order
     if order_post.update(order_post_params)
-      produce_executed_count = 0
-      order_post.order.order_posts.each do |a|
-        if a.making_status == 0
-          produce_executed_count += 1
-        else
-          break
-        end
+      if params[:order_post][:making_status] == "2"
+        order_status.status = "2"
+        order_status.save
+      elsif order_status.order_posts.count == order_status.order_posts.where(making_status: "3").count
+        order_status.status = "3"
+        order_status.save
       end
-
-      if order_post.making_status == "2"
-        order_post.order.status = "3"
-      elsif
-        produce_executed_count == order_post.order.order_posts.count
-        order_post.order.status = "2"
-      end
-      order_post.order.save!
-      flash[:notice] = '更新されました。'
-    else
-      @order = order_post.order
-      @order_post = @order.order_post
-      render "orders/show"
+      redirect_to admin_order_path(order_post.order_id)
     end
-    redirect_to admin_order_path(order_post.order_id)
-  end
 
   private
   def order_post_params
